@@ -60,7 +60,6 @@ public class loginController {
                 if (resultSet.next()) {
                     getData.userName = username.getText();
 
-
                     alert = new Alert(AlertType.INFORMATION);
                     alert.setHeaderText(null);
                     alert.setContentText("Login Successfully!");
@@ -96,11 +95,11 @@ public class loginController {
                 }
             }
 
-            if(resultSet.next()){
+            // if(resultSet.next()){
 
-            }else {
+            // }else {
 
-            }
+            // }
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -110,6 +109,5 @@ public class loginController {
 
     public void close(){
         System.exit(0);
-
     }
 }

@@ -20,8 +20,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.chart.BarChart;
-import javafx.scene.chart.LineChart;
+// import javafx.scene.chart.BarChart;
+// import javafx.scene.chart.LineChart;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
@@ -319,9 +319,6 @@ public class dashboardController implements Initializable{
         availableCar_model.setText("");
         availableCar_status.getSelectionModel().clearSelection();
         availableCar_price.setText("");
-
-        // getData.path = "";
-        // availableCars_imageView.setImage(null);
     }
 
     public void availableCarDelete() {
@@ -336,7 +333,6 @@ public class dashboardController implements Initializable{
                     || availableCar_model.getText().isEmpty()
                     || availableCar_status.getSelectionModel().getSelectedItem() == null
                     || availableCar_price.getText().isEmpty()
-                    // || getData.path == null || getData.path == ""
                     ) {
                 alert = new Alert(AlertType.ERROR);
                 alert.setTitle("Error Message");
@@ -502,10 +498,6 @@ public class dashboardController implements Initializable{
         availableCar_brand.setText(carD.getBrand());
         availableCar_model.setText(carD.getModel());
         availableCar_price.setText(String.valueOf(carD.getPrice()));
-
-        // String url = "file:" + carD.getImage();
-        // image = new Image(url, 116, 153, false, true);
-        // availableCar_imageView(image);
     }
 
     public void renttPay(){
