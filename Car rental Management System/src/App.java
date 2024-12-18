@@ -39,8 +39,6 @@ public class App extends Application {
 
             stage.initStyle(StageStyle.TRANSPARENT);
 
-            stage.initStyle(StageStyle.TRANSPARENT);
-
             stage.setScene(scene);
             stage.show();
         } catch (IOException e) {

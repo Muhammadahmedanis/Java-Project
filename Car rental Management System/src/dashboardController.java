@@ -5,7 +5,6 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
-// import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -20,8 +19,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-// import javafx.scene.chart.BarChart;
-// import javafx.scene.chart.LineChart;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
@@ -33,11 +30,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
-// import javafx.scene.image.Image;
-// import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-// import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -70,12 +64,6 @@ public class dashboardController implements Initializable{
     @FXML
     private Button availableCar_deleteBtn;
 
-    // @FXML
-    // private ImageView availableCar_imageView;
-
-    // @FXML
-    // private Button availableCar_importBtn;
-
     @FXML
     private Button availableCar_insertBtn;
 
@@ -85,11 +73,8 @@ public class dashboardController implements Initializable{
     @FXML
     private TextField availableCar_price;
 
-    // @FXML
-    // private TextField availableCar_search;
-
     @FXML
-    private ComboBox<?> availableCar_status;
+    private ComboBox<String> availableCar_status;
 
     @FXML
     private TableView<carData> availableCar_tableView;
@@ -112,14 +97,8 @@ public class dashboardController implements Initializable{
     @FXML
     private Button home_btn;
 
-    // @FXML
-    // private LineChart<?, ?> home_customerChart;
-
     @FXML
     private AnchorPane home_form;
-
-    // @FXML
-    // private BarChart<?, ?> home_incomeChart;
 
     @FXML
     private Label home_totalCustomers;
@@ -180,12 +159,6 @@ public class dashboardController implements Initializable{
 
     @FXML
     private TextField rent_YourName;
-
-    // @FXML
-    // private ComboBox<?> rent_gender;
-
-    // @FXML
-    // private TextField rent_lastName;
 
     @FXML
     private ComboBox<?> rent_model;
@@ -440,11 +413,9 @@ public class dashboardController implements Initializable{
 
     private String[] listStatus = {"Available", "Not Available"};
     public void availableCarStatusList() {
-        List<String> listS = new ArrayList<>();
-        for (String data : listStatus) {
-            listS.add(data);
-        }
-        ObservableList listData = FXCollections.observableArrayList(listS);
+        ObservableList<String> listData = FXCollections.observableArrayList(listStatus);
+    
+        // Set the items to the ComboBox or ListView
         availableCar_status.setItems(listData);
     }
     
@@ -476,7 +447,7 @@ public class dashboardController implements Initializable{
 
     private ObservableList<carData> availableCarList;
     public void availableCarShowListData(){
-        availableCarList =  availableCarListData();
+        availableCarList = availableCarListData();
         availableCar_col_carId.setCellValueFactory(new PropertyValueFactory<>("carId"));
         availableCar_col_brand.setCellValueFactory(new PropertyValueFactory<>("brand"));
         availableCar_col_model.setCellValueFactory(new PropertyValueFactory<>("model"));
@@ -498,6 +469,7 @@ public class dashboardController implements Initializable{
         availableCar_brand.setText(carD.getBrand());
         availableCar_model.setText(carD.getModel());
         availableCar_price.setText(String.valueOf(carD.getPrice()));
+        // availableCar_status.setText(String.valueOf(carD.getStatus()));
     }
 
     public void renttPay(){
@@ -700,7 +672,7 @@ public class dashboardController implements Initializable{
     }
 
     public void rentCarCarId(){
-        String sql = "SELECT * FROM car WHERE status = 'Available' OR status = 'Not Available'";
+        String sql = "SELECT * FROM car WHERE status = 'Available'";
         connect = database.connectDb();
         try {
             prepare = connect.prepareStatement(sql);
